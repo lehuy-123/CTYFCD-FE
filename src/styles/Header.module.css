@@ -42,3 +42,16 @@
   gap: 16px;
   font-size: 18px;
 }
+
+
+.loginButton {
+  margin-left: 12px;
+  font-weight: 500;
+  color: #111;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.loginButton:hover {
+  color: #0070f3;
+}

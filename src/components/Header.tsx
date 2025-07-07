@@ -20,11 +20,12 @@ export default function Header() {
         <Link href="/contact">Liên hệ</Link>
       </nav>
 
-      {/* Biểu tượng phải */}
+      {/* Biểu tượng + đăng nhập bên phải */}
       <div className={styles.icons}>
         <span>🔍</span>
         <span>🔒</span>
         <span>🇻🇳 🇺🇸 🇨🇦</span>
+        <Link href="/login" className={styles.loginButton}>Đăng nhập</Link>
       </div>
     </header>
   );

@@ -1,7 +1,20 @@
 "use client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import styles from "@/styles/AdminDashboard.module.css";
 
 export default function AdminDashboard() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || !user.isAdmin) {
+      alert("Bạn không có quyền truy cập trang quản trị!");
+      router.push("/login"); // hoặc "/" nếu muốn chuyển về trang chủ
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
       <h1>Trang quản trị FAÇADE</h1>

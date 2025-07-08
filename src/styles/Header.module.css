@@ -41,8 +41,8 @@
   align-items: center;
   gap: 16px;
   font-size: 18px;
+  /* Đảm bảo không bị dính vào nhau */
 }
-
 
 .loginButton {
   margin-left: 12px;
@@ -54,4 +54,42 @@
 
 .loginButton:hover {
   color: #0070f3;
+}
+
+.adminBtn {
+  padding: 6px 14px;
+  background: #3234d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 6px;
+}
+.adminBtn:hover {
+  background: #212288;
+}
+
+.homeBtn {
+  padding: 6px 12px;
+  background: #e4e6ed;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 6px;
+}
+.homeBtn:hover {
+  background: #c5c9d6;
+}
+
+/* Responsive: Tăng khoảng cách trên mobile */
+@media (max-width: 900px) {
+  .nav {
+    gap: 18px;
+  }
+  .icons {
+    gap: 10px;
+    font-size: 16px;
+  }
 }

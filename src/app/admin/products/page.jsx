@@ -21,12 +21,13 @@ export default function AdminProducts() {
   const [editId, setEditId] = useState(null);
   const [editForm, setEditForm] = useState({});
 
-  useEffect(() => { fetchProducts(); }, []);
-
+  // Đảm bảo fetch lại dữ liệu mới nhất mỗi lần cần
   const fetchProducts = async () => {
     const res = await axios.get("http://localhost:5001/api/products");
     setProducts(res.data);
   };
+
+  useEffect(() => { fetchProducts(); }, []);
 
   const handleDelete = async (id) => {
     if (confirm("Xoá sản phẩm này?")) {
@@ -39,7 +40,7 @@ export default function AdminProducts() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Xử lý chọn file ảnh đại diện (tạo base64)
+  // Chọn file ảnh đại diện (base64)
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -51,7 +52,7 @@ export default function AdminProducts() {
     }
   };
 
-  // Xử lý chọn file ảnh trong phần sửa
+  // Chọn file ảnh khi sửa
   const handleEditFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -84,23 +85,25 @@ export default function AdminProducts() {
         applications: "",
         sold: 0
       });
-      fetchProducts();
+      await fetchProducts();
     } catch (err) {
       alert("Thêm sản phẩm thất bại!");
     }
   };
 
-const handleEdit = (product) => {
-  setEditId(product._id);
-  setEditForm({ ...product }); // Clone để tránh reference object bị cập nhật lẫn nhau
-};
+  // Khi nhấn Sửa, luôn lấy bản mới nhất từ products (tránh bị lỗi cache cũ)
+  const handleEdit = (product) => {
+    const latest = products.find(p => p._id === product._id) || product;
+    setEditId(product._id);
+    setEditForm({ ...latest });
+  };
 
-
+  // Lưu sửa sản phẩm
   const handleSaveEdit = async (id) => {
     try {
       await axios.put(`http://localhost:5001/api/products/${id}`, editForm);
-      setEditId(null);
-      fetchProducts();
+      await fetchProducts();      // Phải chờ fetch xong!
+      setEditId(null);            // Đóng form sau khi đã cập nhật xong!
     } catch (err) {
       alert("Sửa sản phẩm thất bại!");
     }

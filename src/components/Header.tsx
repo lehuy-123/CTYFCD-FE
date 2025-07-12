@@ -36,8 +36,8 @@ export default function Header() {
       <nav className={styles.nav}>
         <Link href="/">Trang chủ</Link>
         <Link href="/about">Giới thiệu</Link>
-        <Link href="/projects">Sản Phẩm</Link>
-        <Link href="/products">Dự Án</Link>
+        <Link href="/products">Sản Phẩm</Link>
+        <Link href="/projects">Dự Án</Link>
         <Link href="/contact">Liên hệ</Link>
       </nav>
 

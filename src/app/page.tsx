@@ -1,5 +1,6 @@
 import styles from "@/styles/Home.module.css";
-import HotProducts from "@/components/HotProducts"; // 👈 import component sản phẩm hot
+import HotProducts from "@/components/HotProducts"; // 👈 import sản phẩm hot
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,20 @@ export default function HomePage() {
 
       {/* HOT PRODUCTS SECTION */}
       <HotProducts />
+
+      {/* COMPANY BANNER SECTION */}
+<section className={styles.companyBanner}>
+  <div className={styles.bannerWrapper}>
+    <Image
+      src="/images/bannernew.png"
+      alt="Giới thiệu công ty FAÇADE"
+      fill
+      priority
+      className={styles.bannerImage}
+    />
+  </div>
+</section>
+
     </div>
   );
 }

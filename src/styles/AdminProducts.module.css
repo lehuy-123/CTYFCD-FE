@@ -15,61 +15,6 @@
 }
 
 .form {
-  margin-bottom: 26px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.input {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-.th, .td {
-  padding: 12px 16px;
-  border: 1px solid #eee;
-  text-align: left;
-}
-
-.th {
-  background: #f9f9f9;
-  font-weight: bold;
-}
-
-.td {
-  background: #fff;
-}
-
-.btn {
-  margin-right: 8px;
-  padding: 6px 12px;
-  background: #1976d2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background 0.18s;
-}
-
-.btn:last-child {
-  background: #d32f2f;
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-.form {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 18px;
@@ -77,15 +22,34 @@
   align-items: flex-start;
 }
 
+.rowForm {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  /* Removed min-width: max-content to prevent extra space */
+}
+
 .input {
-  min-width: 180px;
-  flex: 1 1 180px;
+  min-width: 160px;
+  max-width: 220px;
   padding: 10px 12px;
   border-radius: 6px;
-  border: 1px solid #e0e0e0;
-  font-size: 15px;
-  margin-bottom: 0;
-  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.textarea {
+  min-width: 160px;
+  max-width: 220px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 60px;
 }
 
 .textareaRow {
@@ -93,17 +57,6 @@
   display: flex;
   gap: 18px;
   margin-top: 8px;
-}
-
-.textarea {
-  flex: 1 1 250px;
-  min-width: 200px;
-  padding: 10px 12px;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
-  font-size: 15px;
-  background: #fff;
-  resize: vertical;
 }
 
 .btn {
@@ -118,6 +71,7 @@
   margin-left: 10px;
   transition: background 0.18s;
 }
+
 .btn:hover {
   background: #b71c1c;
 }
@@ -141,4 +95,26 @@
     margin-left: 0;
     margin-top: 10px;
   }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.th, .td {
+  padding: 12px 16px;
+  border: 1px solid #eee;
+  text-align: left;
+}
+
+.th {
+  background: #f9f9f9;
+  font-weight: bold;
+}
+
+.td {
+  background: #fff;
 }

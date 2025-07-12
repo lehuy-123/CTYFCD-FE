@@ -14,7 +14,6 @@ export default function AdminDashboard() {
     }
   }, []);
 
-  // Hàm điều hướng
   const handleNavigate = (path) => {
     router.push(path);
   };
@@ -49,6 +48,15 @@ export default function AdminDashboard() {
         >
           <h3>👤 Quản lý Tài khoản</h3>
           <p>Xem và chỉnh sửa thông tin admin.</p>
+        </div>
+
+        <div
+          className={styles.card}
+          style={{ cursor: "pointer" }}
+          onClick={() => handleNavigate("/admin/projects")}
+        >
+          <h3>🏗️ Quản lý Dự án</h3>
+          <p>Đăng bài, chỉnh sửa và xoá các dự án đã thực hiện.</p>
         </div>
       </div>
     </div>

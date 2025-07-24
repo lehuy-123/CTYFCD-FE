@@ -11,7 +11,7 @@ interface Product {
   slug: string;
   price: number;
   image: string;
-  gallery: string;         // Chuỗi url ảnh, ngăn cách dấu phẩy (nếu có)
+  gallery: string;        
   shortDesc: string;
   description: string;
   specs: string;
@@ -28,7 +28,7 @@ export default function ProductDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // Nếu muốn demo DỰ ÁN thì dùng tạm mảng này (sau này gọi API thực tế)
+
   const demoProjects = [
     { _id: "1", image: "/demo-project1.jpg", title: "Dự án FAÇADE Hà Nội" },
     { _id: "2", image: "/demo-project2.jpg", title: "Văn phòng cao tầng" }

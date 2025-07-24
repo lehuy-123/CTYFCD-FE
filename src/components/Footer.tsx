@@ -8,7 +8,7 @@ export default function Footer() {
         {/* Logo Elval */}
         <div className={styles.elval}>
           <Image
-            src="/images/elval.png" // hãy thay bằng logo đúng nếu có
+            src="/images/elval.png" 
             alt="ELVAL COLOUR"
             width={280}
             height={100}
@@ -24,13 +24,11 @@ export default function Footer() {
           <p>Mã số thuế: 0313990323</p>
           <p>Tài khoản: 060134420653 tại Ngân hàng Sacombank – CN Quận 12</p>
         </div>
+       
 
-        {/* Icon mạng xã hội */}
         <div className={styles.socials}>
-          <a href="#"><Image src="/icons/facebook.svg" alt="Facebook" width={24} height={24} /></a>
-          <a href="#"><Image src="/icons/twitter.svg" alt="Twitter" width={24} height={24} /></a>
-          <a href="#"><Image src="/icons/youtube.svg" alt="YouTube" width={24} height={24} /></a>
-          <a href="#"><Image src="/icons/google.svg" alt="Google+" width={24} height={24} /></a>
+          <a href="#"><Image src="/images/logo.png" alt="Facebook" width={24} height={24} /></a>
+         
         </div>
       </div>
 

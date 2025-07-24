@@ -44,17 +44,20 @@
 
 
 
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
-  background-color: white;
+
+  background: rgba(0, 79, 134, 0.9); /* ✅ xanh trong suốt */
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
+
+  backdrop-filter: blur(2px);        /* ✅ làm mờ ảnh phía sau (hỗ trợ trình duyệt mới) */
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .logo {
@@ -74,7 +77,9 @@
   font-size: 18px;
   font-weight: 600;
   font-style: italic;
+  color: white;              /* ✅ chuyển chữ logo sang trắng */
 }
+
 
 
 
@@ -97,23 +102,25 @@
   border-radius: 6px;
   cursor: pointer;
   background-color: transparent;
-  color: #222;
+  color: white; /* ✅ Chữ trắng */
   transition: background-color 0.3s ease, color 0.3s ease;
-  font-weight: 400; /* bỏ in đậm */
+  font-weight: 400;
   border: none;
 }
 
 
-.menuItem:hover:not(.active) {
-  background-color: #bcbcbc;
-}
 
+.menuItem:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.15); /* ✅ hiệu ứng sáng khi hover */
+  color: white;
+}
 
 .active {
-  background-color: #000;    /* nền đen */
-  color: #fff;               /* chữ trắng */
-  font-weight: 400;          /* không in đậm */
+  background-color: white;  /* hoặc #fff */
+  color: #005792;           /* ✅ chữ xanh để nổi bật */
+  font-weight: 400;
 }
+
 
 
 
@@ -133,7 +140,7 @@
 
 .adminBtn {
   font-size: 12px;
-  background-color: #000000;
+  background-color: #003e66;   /* ✅ xanh đậm */
   color: white;
   padding: 4px 10px;
   border-radius: 6px;
@@ -142,8 +149,8 @@
 
 .homeBtn {
   background-color: transparent;
-  color: #333;
-  border: 1px solid #ccc;
+  color: white;
+  border: 1px solid #eee;
   padding: 4px 10px;
   border-radius: 6px;
 }

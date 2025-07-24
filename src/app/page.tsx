@@ -8,7 +8,7 @@ export default function HomePage() {
       {/* HERO SECTION - dùng layout responsive để ảnh không bị crop */}
       <section className={styles.heroImageWrapper}>
         <Image
-          src="/images/bannernew.png?v=2"
+          src="/images/new.jpg"
 
           alt="Banner công ty FAÇADE"
           width={1700}      // ✅ thay bằng đúng kích thước thật của ảnh nếu khác

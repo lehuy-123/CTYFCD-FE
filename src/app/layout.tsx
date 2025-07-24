@@ -1,3 +1,4 @@
+// app/layout.tsx
 import '../styles/global.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -7,19 +8,22 @@ export const metadata = {
   description: 'Giải pháp mặt dựng & vật liệu xây dựng cao cấp',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="vi">
       <head>
-        {/* ✅ Nhúng font Playfair Display */}
         <link
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="min-h-screen flex flex-col">
         <Header />
-        {children}
+        <main className="flex-grow">{children}</main>
         <Footer />
       </body>
     </html>

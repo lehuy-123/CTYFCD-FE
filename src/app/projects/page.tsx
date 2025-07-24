@@ -7,10 +7,13 @@ async function getProjects() {
       cache: 'no-store',
     });
 
+   
     if (!res.ok) {
       console.error("Lỗi khi fetch API:", res.statusText);
       return [];
     }
+
+
 
     const data = await res.json();
     return data;

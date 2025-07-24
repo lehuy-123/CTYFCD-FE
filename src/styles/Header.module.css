@@ -1,95 +1,186 @@
+
+
+
+
+.char {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeInOutChar 3s ease infinite;
+  animation-fill-mode: both;
+}
+
+
+@keyframes fadeInOutChar {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  position: relative;
-  z-index: 10;
+  background-color: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 600;
+}
+
+.logoIcon {
+  margin-right: 8px;
+  opacity: 0.85;
+}
+
+.logoText {
+  display: inline-flex;
+  font-family: 'Playfair Display', serif;
+  gap: 2px;
   font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
 }
 
+
+
+
+
+
+
+
+
+
+/* Menu */
 .nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
-  gap: 32px;
+  gap: 12px;
+  align-items: center;
 }
 
-.nav a {
-  font-weight: 500;
-  text-decoration: none;
-  color: #111;
-  transition: 0.2s ease;
+.menuItem {
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #222;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 400; /* bỏ in đậm */
+  border: none;
 }
 
-.nav a:hover {
-  color: #1e40af;
+
+.menuItem:hover:not(.active) {
+  background-color: #bcbcbc;
 }
 
+
+.active {
+  background-color: #000;    /* nền đen */
+  color: #fff;               /* chữ trắng */
+  font-weight: 400;          /* không in đậm */
+}
+
+
+
+/* Responsive toggle */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+}
+
+/* Góc phải */
 .icons {
   display: flex;
   align-items: center;
-  gap: 16px;
-  font-size: 18px;
-  /* Đảm bảo không bị dính vào nhau */
-}
-
-.loginButton {
-  margin-left: 12px;
-  font-weight: 500;
-  color: #111;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.loginButton:hover {
-  color: #0070f3;
+  gap: 12px;
 }
 
 .adminBtn {
-  padding: 6px 14px;
-  background: #3234d2;
-  color: #fff;
-  border: none;
+  font-size: 12px;
+  background-color: #000000;
+  color: white;
+  padding: 4px 10px;
   border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  margin-left: 6px;
-}
-.adminBtn:hover {
-  background: #212288;
+  border: none;
 }
 
 .homeBtn {
-  padding: 6px 12px;
-  background: #e4e6ed;
+  background-color: transparent;
   color: #333;
-  border: none;
+  border: 1px solid #ccc;
+  padding: 4px 10px;
   border-radius: 6px;
-  cursor: pointer;
-  margin-left: 6px;
-}
-.homeBtn:hover {
-  background: #c5c9d6;
 }
 
-/* Responsive: Tăng khoảng cách trên mobile */
-@media (max-width: 900px) {
+.userGreeting {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.loginButton {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 4px 10px;
+  border: 1px solid #999;
+  border-radius: 6px;
+}
+
+/* Responsive < 768px */
+@media (max-width: 768px) {
   .nav {
-    gap: 18px;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    background: white;
+    width: 100%;
+    left: 0;
+    padding: 12px;
   }
-  .icons {
-    gap: 10px;
-    font-size: 16px;
+
+  .showNav {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
   }
 }

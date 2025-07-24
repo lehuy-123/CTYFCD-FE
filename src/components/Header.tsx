@@ -4,8 +4,8 @@ import styles from '@/styles/Header.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, usePathname } from "next/navigation";
+import { FiMenu, FiX } from 'react-icons/fi';
 
-// Định nghĩa kiểu dữ liệu cho user
 type User = {
   id: string;
   username: string;
@@ -14,8 +14,9 @@ type User = {
 
 export default function Header() {
   const [user, setUser] = useState<User | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
-  const pathname = usePathname(); // Có thể là string | null
+  const pathname = usePathname();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -24,48 +25,59 @@ export default function Header() {
     }
   }, []);
 
+  const handleNavigate = (path: string) => {
+    router.push(path);
+    setMenuOpen(false);
+  };
+
   return (
     <header className={styles.header}>
       {/* Logo trái */}
       <div className={styles.logo}>
-        <Image src="/images/logo.png" alt="FCD logo" width={40} height={40} />
-        <span>FAÇADE</span>
+        <Image
+          src="/images/logo.png"
+          alt="FCD logo"
+          width={40}
+          height={40}
+          className={styles.logoIcon}
+        />
+        <span className={styles.logoText}>
+          {"ALU-FACADES".split("").map((char, index) => (
+            <span
+              key={index}
+              className={styles.char}
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              {char}
+            </span>
+          ))}
+        </span>
       </div>
 
+      {/* Nút menu mobile */}
+      <button className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+      </button>
+
       {/* Menu giữa */}
-      <nav className={styles.nav}>
-        <Link href="/">Trang chủ</Link>
-        <Link href="/about">Giới thiệu</Link>
-        <Link href="/products">Sản Phẩm</Link>
-        <Link href="/projects">Dự Án</Link>
-        <Link href="/contact">Liên hệ</Link>
+      <nav className={`${styles.nav} ${menuOpen ? styles.showNav : ''}`}>
+        <span className={`${styles.menuItem} ${pathname === '/' ? styles.active : ''}`} onClick={() => handleNavigate("/")}>Trang chủ</span>
+        <span className={`${styles.menuItem} ${pathname === '/about' ? styles.active : ''}`} onClick={() => handleNavigate("/about")}>Giới thiệu</span>
+        <span className={`${styles.menuItem} ${pathname === '/products' ? styles.active : ''}`} onClick={() => handleNavigate("/products")}>Sản phẩm</span>
+        <span className={`${styles.menuItem} ${pathname === '/projects' ? styles.active : ''}`} onClick={() => handleNavigate("/projects")}>Dự án</span>
+        <span className={`${styles.menuItem} ${pathname === '/contact' ? styles.active : ''}`} onClick={() => handleNavigate("/contact")}>Liên hệ</span>
       </nav>
 
-      {/* Biểu tượng + đăng nhập bên phải */}
+      {/* Góc phải */}
       <div className={styles.icons}>
-       
-        <span>🇻🇳 🇺🇸 </span>
         {user?.isAdmin && (
-          <button
-            className={styles.adminBtn}
-            onClick={() => router.push("/admin/admindashboard")}
-          >
-            Admin Dashboard
-          </button>
+          <button className={styles.adminBtn} onClick={() => handleNavigate("/admin/admindashboard")}>Admin</button>
         )}
-        {/* Chỉ hiện nút Trang chủ nếu đang ở /admin */}
-        {pathname && pathname.startsWith("/admin") && (
-          <button
-            className={styles.homeBtn}
-            onClick={() => router.push("/")}
-          >
-            Trang chủ
-          </button>
+        {pathname?.startsWith("/admin") && (
+          <button className={styles.homeBtn} onClick={() => handleNavigate("/")}>Trang chủ</button>
         )}
         {user ? (
-          <span style={{ marginLeft: 12, fontWeight: 500, whiteSpace: "nowrap" }}>
-            Xin chào, {user.username}
-          </span>
+          <span className={styles.userGreeting}>Xin chào, {user.username}</span>
         ) : (
           <Link href="/login" className={styles.loginButton}>Đăng nhập</Link>
         )}

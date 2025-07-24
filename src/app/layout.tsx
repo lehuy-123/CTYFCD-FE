@@ -10,6 +10,13 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
+      <head>
+        {/* ✅ Nhúng font Playfair Display */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Header />
         {children}

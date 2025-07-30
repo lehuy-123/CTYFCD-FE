@@ -71,15 +71,14 @@
 }
 
 .logoText {
-  display: inline-flex;
+  
   font-family: 'Playfair Display', serif;
-  gap: 2px;
-  font-size: 18px;
-  font-weight: 600;
-  font-style: italic;
-  color: white;              /* ✅ chuyển chữ logo sang trắng */
+ font-weight: 500;
+  font-size: 19px;
+  letter-spacing: 1px;    
+  color: white;
+  gap: 10px;       /* ✅ chuyển chữ logo sang trắng */
 }
-
 
 
 

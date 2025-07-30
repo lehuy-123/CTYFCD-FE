@@ -42,7 +42,7 @@ export default function Header() {
           className={styles.logoIcon}
         />
         <span className={styles.logoText}>
-          {"ALU-FACADES".split("").map((char, index) => (
+          {"ALU-FACADE".split("").map((char, index) => (
             <span
               key={index}
               className={styles.char}
